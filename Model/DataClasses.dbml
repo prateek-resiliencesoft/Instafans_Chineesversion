@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="C325018_Instafens" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=mssql1003.ixwebhosting.com;Initial Catalog=C325018_Instafens;Persist Security Info=True;User ID=C325018_Instafens" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="C325018_InstafensConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="C325018_Instafens.OperationSetting" Member="OperationSettings">
+    <Type Name="OperationSetting">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LikeDelay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FollowDelay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SearchDelay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="C325018_Instafens.tblAutoLikeUser" Member="tblAutoLikeUsers">
+    <Type Name="tblAutoLikeUser">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Login_Username" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Insta_Username" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MinCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaxCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="C325018_Instafens.tblOrder" Member="tblOrders">
+    <Type Name="tblOrder">
+      <Column Name="OrderId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OrderNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OrderType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Url" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClientUserName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OrderDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="StartPoint" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EndPoint" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CurrentCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OrderStatus" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LastUpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Paid" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FeatureType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="C325018_Instafens.tblOrderTypePrice" Member="tblOrderTypePrices">
+    <Type Name="tblOrderTypePrice">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OrderType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="MinAmount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaxAmount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="C325018_Instafens.tblPayment" Member="tblPayments">
+    <Type Name="tblPayment">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="C325018_Instafens.tblPaymentRecords" Member="tblPaymentRecords">
+    <Type Name="tblPaymentRecord">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PaymentDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PaymentUpdatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TransactionId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PayerEmail" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ReceiverEmail" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="C325018_Instafens.tblSocialAccounts" Member="tblSocialAccounts">
+    <Type Name="tblSocialAccount">
+      <Column Name="AccountType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Username" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Proxy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Port" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProxyUsername" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ProxyPassword" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="C325018_Instafens.spPaymentRecordDetailsForUser" Method="spPaymentRecordDetailsForUser">
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="spPaymentRecordDetailsForUserResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PaymentDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PaymentUpdatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TransactionId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PayerEmail" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ReceiverEmail" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>
