@@ -1,0 +1,2 @@
+VERIFIED
+payerEmail : prateek@resiliencesoft.com paymentStatus : Completed receiverEmail : myappdeveloper27-facilitator@gmail.com amount : 1.00 custom :  txn_id : 6TA571468Y348152T
