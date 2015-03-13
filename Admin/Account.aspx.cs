@@ -9,6 +9,8 @@ using System.Text.RegularExpressions;
 using SocialPanel.Model;
 using Instafens;
 using Instafens.Model;
+using System.IO;
+using InstagramBotLib.Helper;
 
 namespace Social_Media_Service_Panel.Admin
 {
@@ -58,60 +60,78 @@ namespace Social_Media_Service_Panel.Admin
         {
             try
             {
-                List<string> lstAcconts = Regex.Split(txtAccounts.Text.Trim(), "\r\n").ToList();
-
-                foreach (string item in lstAcconts)
+                if (FileUploadControl.HasFile)
                 {
-                    try
+                    if (FileUploadControl.PostedFile.ContentType == "text/plain")
                     {
-                        string[] arAccounts = item.Split(':');
+                        string filename = FileUploadControl.PostedFile.FileName;
+                        FileUploadControl.SaveAs(Server.MapPath("~/AccountFiles/" + filename));
+                        List<string> lstAcconts = SoftBucketFileUtillity.ReadFile(Server.MapPath("~/AccountFiles/" + filename));
 
-                        string Username = string.Empty;
-                        string Password = string.Empty;
-                        string Proxy = string.Empty;
-                        string Port = "0";
-                        string ProxyUsername = string.Empty;
-                        string ProxyPassword = string.Empty;
+                        //List<string> lstAcconts = Regex.Split(txtAccounts.Text.Trim(), "\r\n").ToList();
 
-                        if (arAccounts.Count() == 4)
+                        foreach (string item in lstAcconts)
                         {
-                            Username = arAccounts[0];
-                            Password = arAccounts[1];
-                            Proxy = arAccounts[2];
-                            Port = arAccounts[3];
-                        }
-                        else if (arAccounts.Count() == 6)
-                        {
-                            Username = arAccounts[0];
-                            Password = arAccounts[1];
-                            Proxy = arAccounts[2];
-                            Port = arAccounts[3];
-                            ProxyUsername = arAccounts[4];
-                            ProxyPassword = arAccounts[5];
-                        }
-                        else
-                        {
-                            Username = arAccounts[0];
-                            Password = arAccounts[1];
+                            try
+                            {
+                                string[] arAccounts = item.Split(':');
+
+                                string Username = string.Empty;
+                                string Password = string.Empty;
+                                string Proxy = string.Empty;
+                                string Port = "0";
+                                string ProxyUsername = string.Empty;
+                                string ProxyPassword = string.Empty;
+
+                                if (arAccounts.Count() == 4)
+                                {
+                                    Username = arAccounts[0];
+                                    Password = arAccounts[1];
+                                    Proxy = arAccounts[2];
+                                    Port = arAccounts[3];
+                                }
+                                else if (arAccounts.Count() == 6)
+                                {
+                                    Username = arAccounts[0];
+                                    Password = arAccounts[1];
+                                    Proxy = arAccounts[2];
+                                    Port = arAccounts[3];
+                                    ProxyUsername = arAccounts[4];
+                                    ProxyPassword = arAccounts[5];
+                                }
+                                else
+                                {
+                                    Username = arAccounts[0];
+                                    Password = arAccounts[1];
+                                }
+
+                                if (Request.QueryString["ID"] == null)
+                                {
+                                    socialAccountRepo.AddAccount(ddlAccountType.SelectedItem.Value, Username, Password, Proxy, int.Parse(Port), ProxyUsername, ProxyPassword, true);
+                                }
+                                else
+                                {
+                                    string queryUsername = Request.QueryString["ID"];
+                                    socialAccountRepo.UpdateAccount(ddlAccountType.SelectedItem.Value, Username, Password, Proxy, int.Parse(Port), ProxyUsername, ProxyPassword, true);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+
+                            }
                         }
 
-                        if (Request.QueryString["ID"] == null)
-                        {
-                            socialAccountRepo.AddAccount(ddlAccountType.SelectedItem.Value, Username, Password, Proxy, int.Parse(Port), ProxyUsername, ProxyPassword, true);
-                        }
-                        else
-                        {
-                            string queryUsername = Request.QueryString["ID"];
-                            socialAccountRepo.UpdateAccount(ddlAccountType.SelectedItem.Value, Username, Password, Proxy, int.Parse(Port), ProxyUsername, ProxyPassword, true);
-                        }
+                        lblerror.Text = "Accounts Added Successfully";
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        
+                        lblerror.Text = "Accept only Text file";
                     }
                 }
-
-                lblerror.Text = "Accounts Added Successfully";
+                else
+                {
+                    lblerror.Text = "Please select a File.";
+                }
             }
             catch (Exception ex)
             {

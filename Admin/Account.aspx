@@ -45,7 +45,7 @@
                                     </asp:DropDownList>
                                 </div>
                             </div>
-                            <div class="control-group">
+                            <%--<div class="control-group">
                                 <label class="control-label" for="focusedInput">
                                     Account</label>
                                 <div class="controls">
@@ -54,6 +54,13 @@
                                      <span class="help-inline"><asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtAccounts"
                                                 ErrorMessage="Please Enter Account" Font-Bold="True" ForeColor="Red"></asp:RequiredFieldValidator></span>
                                 </div>
+                            </div>--%>
+                            <div class="control-group">
+                                <label class="control-label" for="focusedInput">
+                                    Account</label>
+                                  <div class="controls">
+                                     <asp:FileUpload id="FileUploadControl" runat="server" />
+                                 </div>
                             </div>
                             <div class="control-group error">
                                 <label class="control-label" for="inputError">
