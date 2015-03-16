@@ -54,12 +54,13 @@ namespace SocialPanel.Model
             }
         }
 
-        public IQueryable<tblSocialAccount> GetAccounts()
+        public List<tblSocialAccount> GetAccounts()
         {
             using (DataClassesDataContext Dbcotext = new DataClassesDataContext())
             {
+                Dbcotext.DeferredLoadingEnabled = false;
                 var tblSocialAccountDetails = Dbcotext.tblSocialAccounts;
-                return tblSocialAccountDetails.OrderByDescending(S => S.DateTime);
+                return tblSocialAccountDetails.OrderByDescending(S => S.DateTime).ToList();
             }
         }
 
