@@ -36,11 +36,11 @@ namespace Social_Media_Service_Panel.Admin
                         {
                             string queryUsername = Request.QueryString["ID"];
 
-                            tblSocialAccount socialAccounts = socialAccountRepo.GetAccount(queryUsername);
-                            txtAccounts.Text = socialAccounts.Username + ":" + socialAccounts.Password + ":" + socialAccounts.Proxy
-                                + ":" + socialAccounts.Port + ":" + socialAccounts.ProxyUsername + ":" + socialAccounts.ProxyPassword;
+                            //tblSocialAccount socialAccounts = socialAccountRepo.GetAccount(queryUsername);
+                            //txtAccounts.Text = socialAccounts.Username + ":" + socialAccounts.Password + ":" + socialAccounts.Proxy
+                            //    + ":" + socialAccounts.Port + ":" + socialAccounts.ProxyUsername + ":" + socialAccounts.ProxyPassword;
 
-                            this.ddlAccountType.Items.FindByText(socialAccounts.AccountType).Selected = true;
+                            //this.ddlAccountType.Items.FindByText(socialAccounts.AccountType).Selected = true;
                         }
                     }
                 }

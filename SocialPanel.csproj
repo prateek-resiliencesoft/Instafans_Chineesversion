@@ -45,9 +45,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\Instafens\SocialWebPanel_AutoLikeLatest\SocialWebPanel\bin\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -73,6 +72,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Admin\Account.aspx" />
     <Content Include="Admin\Accounts.aspx" />
+    <Content Include="Admin\AddFund.aspx" />
     <Content Include="Admin\AutoLikeCompletedOrder.aspx" />
     <Content Include="Admin\AutoLikeOrder.aspx" />
     <Content Include="Admin\AutoLikeOrders.aspx" />
@@ -231,6 +231,7 @@
     <Content Include="Admin\js\jquery.uploadify-3.1.min.js" />
     <Content Include="Admin\Setting.aspx" />
     <Content Include="Admin\User.aspx" />
+    <Content Include="Admin\UserPayment.aspx" />
     <Content Include="Admin\Users.aspx" />
     <Content Include="Admin\Order.aspx" />
     <Content Include="Admin\Orders.aspx" />
@@ -483,7 +484,6 @@
     <Content Include="misc\elfinder-connector\MySQLStorage.sql" />
     <Content Include="misc\uploadify.swf" />
     <Content Include="post.aspx" />
-    <Content Include="Register.aspx" />
     <Content Include="Scripts\jqx\gettheme.js" />
     <Content Include="Scripts\jqx\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jqx\jqx-all.js" />
@@ -836,11 +836,12 @@
     <Content Include="Styles\pro_dropline_ie.css" />
     <Content Include="Styles\screen.css" />
     <Content Include="Styles\Site.css" />
-    <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="TestGrid.aspx" />
+    <Content Include="User\AddFollower.aspx" />
+    <Content Include="User\AddLike.aspx" />
     <Content Include="User\AutoLikeCompletedOrder.aspx" />
     <Content Include="User\AutoLikeOrders.aspx" />
     <Content Include="User\ChangePassword.aspx" />
@@ -1000,6 +1001,7 @@
     <Content Include="User\Payment.aspx" />
     <Content Include="User\PaymentDetails.aspx" />
     <Content Include="User\PaymentRecordDetails.aspx" />
+    <Content Include="User\Rechargehistory.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1060,6 +1062,13 @@
     </Compile>
     <Compile Include="Admin\Accounts.aspx.designer.cs">
       <DependentUpon>Accounts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddFund.aspx.cs">
+      <DependentUpon>AddFund.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddFund.aspx.designer.cs">
+      <DependentUpon>AddFund.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\AutoLikeCompletedOrder.aspx.cs">
       <DependentUpon>AutoLikeCompletedOrder.aspx</DependentUpon>
@@ -1152,6 +1161,13 @@
     <Compile Include="Admin\User.aspx.designer.cs">
       <DependentUpon>User.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\UserPayment.aspx.cs">
+      <DependentUpon>UserPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserPayment.aspx.designer.cs">
+      <DependentUpon>UserPayment.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Users.aspx.cs">
       <DependentUpon>Users.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1222,16 +1238,17 @@
     <Compile Include="ForgetPassword.aspx.designer.cs">
       <DependentUpon>ForgetPassword.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
+    <Compile Include="Helper\FacebookDetails.cs" />
     <Compile Include="Helper\FileHelper.cs" />
     <Compile Include="Helper\InstagramDetails.cs" />
+    <Compile Include="Helper\InstagramImageResult.cs" />
+    <Compile Include="Helper\InstagramUser.cs" />
     <Compile Include="Helper\JsonParser.cs" />
     <Compile Include="Helper\KeekDetails.cs" />
     <Compile Include="Helper\MailFormats.cs" />
     <Compile Include="Helper\MailHelper.cs" />
     <Compile Include="Helper\PinterestDetails.cs" />
+    <Compile Include="Helper\SoftBucketFileUtillity.cs" />
     <Compile Include="Helper\SoftBucketHttpUtility.cs" />
     <Compile Include="Helper\TotalAmount.cs" />
     <Compile Include="Helper\TwitterDetails.cs" />
@@ -1293,13 +1310,6 @@
       <DependentUpon>post.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Register.aspx.cs">
-      <DependentUpon>Register.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Register.aspx.designer.cs">
-      <DependentUpon>Register.aspx</DependentUpon>
-    </Compile>
     <Compile Include="sendpayment.aspx.cs">
       <DependentUpon>sendpayment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1320,6 +1330,20 @@
     </Compile>
     <Compile Include="TestGrid.aspx.designer.cs">
       <DependentUpon>TestGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\AddFollower.aspx.cs">
+      <DependentUpon>AddFollower.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\AddFollower.aspx.designer.cs">
+      <DependentUpon>AddFollower.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\AddLike.aspx.cs">
+      <DependentUpon>AddLike.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\AddLike.aspx.designer.cs">
+      <DependentUpon>AddLike.aspx</DependentUpon>
     </Compile>
     <Compile Include="User\AutoLikeCompletedOrder.aspx.cs">
       <DependentUpon>AutoLikeCompletedOrder.aspx</DependentUpon>
@@ -1411,6 +1435,13 @@
     </Compile>
     <Compile Include="User\PaymentRecordDetails.aspx.designer.cs">
       <DependentUpon>PaymentRecordDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\Rechargehistory.aspx.cs">
+      <DependentUpon>Rechargehistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\Rechargehistory.aspx.designer.cs">
+      <DependentUpon>Rechargehistory.aspx</DependentUpon>
     </Compile>
     <Compile Include="User\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
