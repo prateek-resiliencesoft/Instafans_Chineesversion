@@ -73,6 +73,15 @@ namespace SocialPanel.Model
             }
         }
 
-        
+        public void DeleteFalseAccount()
+        {
+            using (DataClassesDataContext Dbcotext = new DataClassesDataContext())
+            {
+                List<tblSocialAccount> FalseUser = Dbcotext.tblSocialAccounts.Where(S=> S.IsActive == false).ToList();
+                Dbcotext.tblSocialAccounts.DeleteAllOnSubmit(FalseUser);
+
+                Dbcotext.SubmitChanges();
+            }
+        }
     }
 }

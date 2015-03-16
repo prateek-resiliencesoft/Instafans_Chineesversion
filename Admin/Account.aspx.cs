@@ -150,5 +150,18 @@ namespace Social_Media_Service_Panel.Admin
 
             }
         }
+
+        protected void btndelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                socialAccountRepo.DeleteFalseAccount();
+                lblDelete.Text = "Accounts Deleted Successfully.";
+            }
+            catch (Exception ex)
+            {
+                lblDelete.Text = ex.Message;
+            }
+        }
     }
 }
