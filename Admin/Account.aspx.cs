@@ -32,16 +32,22 @@ namespace Social_Media_Service_Panel.Admin
                         ddlAccountType.DataValueField = "Value";
                         ddlAccountType.DataBind();
 
-                        if (Request.QueryString["ID"] != null)
-                        {
-                            string queryUsername = Request.QueryString["ID"];
+                        //if (Request.QueryString["ID"] != null)
+                        //{
+                        //    string queryUsername = Request.QueryString["ID"];
 
                             //tblSocialAccount socialAccounts = socialAccountRepo.GetAccount(queryUsername);
                             //txtAccounts.Text = socialAccounts.Username + ":" + socialAccounts.Password + ":" + socialAccounts.Proxy
                             //    + ":" + socialAccounts.Port + ":" + socialAccounts.ProxyUsername + ":" + socialAccounts.ProxyPassword;
 
                             //this.ddlAccountType.Items.FindByText(socialAccounts.AccountType).Selected = true;
-                        }
+                        //}
+                        //    tblSocialAccount socialAccounts = socialAccountRepo.GetAccount(queryUsername);
+                        //    txtAccounts.Text = socialAccounts.Username + ":" + socialAccounts.Password + ":" + socialAccounts.Proxy
+                        //        + ":" + socialAccounts.Port + ":" + socialAccounts.ProxyUsername + ":" + socialAccounts.ProxyPassword;
+
+                        //    this.ddlAccountType.Items.FindByText(socialAccounts.AccountType).Selected = true;
+                        //}
                     }
                 }
                 else
