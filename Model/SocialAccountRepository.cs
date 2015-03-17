@@ -58,6 +58,7 @@ namespace SocialPanel.Model
         {
             using (DataClassesDataContext Dbcotext = new DataClassesDataContext())
             {
+                Dbcotext.DeferredLoadingEnabled = false;
                 var tblSocialAccountDetails = Dbcotext.tblSocialAccounts;
                 return tblSocialAccountDetails.OrderByDescending(S => S.DateTime).ToList();
             }
@@ -72,6 +73,15 @@ namespace SocialPanel.Model
             }
         }
 
-        
+        public void DeleteFalseAccount()
+        {
+            using (DataClassesDataContext Dbcotext = new DataClassesDataContext())
+            {
+                List<tblSocialAccount> FalseUser = Dbcotext.tblSocialAccounts.Where(S=> S.IsActive == false).ToList();
+                Dbcotext.tblSocialAccounts.DeleteAllOnSubmit(FalseUser);
+
+                Dbcotext.SubmitChanges();
+            }
+        }
     }
 }
