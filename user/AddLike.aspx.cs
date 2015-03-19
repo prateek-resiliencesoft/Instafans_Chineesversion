@@ -109,12 +109,16 @@ namespace Instafens.User
                     int endPoint = 0;
                     InstagramDetails instaDetails = new InstagramDetails();
 
-                    InstagramImageResult instaImage = instaDetails.GetInstagramImageIdByUrl(itemUrl);
+                    string Url = itemUrl;
+
+                    Url = Url.Replace("http:", "https:");
+
+                    InstagramImageResult instaImage = instaDetails.GetInstagramImageIdByUrl(Url);
                     startPoint = instaImage.entry_data.DesktopPPage[0].media.likes.count;
 
                     endPoint = startPoint + int.Parse(txtAmount.Text.Trim());
 
-                    orderRepo.AddOrder("Likes", OrderNumber, itemUrl, int.Parse(txtAmount.Text.Trim()),
+                    orderRepo.AddOrder("Likes", OrderNumber, Url, int.Parse(txtAmount.Text.Trim()),
                         HttpContext.Current.User.Identity.Name, DateTime.Now, startPoint, endPoint, 0, "Pending", DateTime.Now, AmountForTask, "Normal");
                     lblErrorMessage.Text = "Order added";
                 }

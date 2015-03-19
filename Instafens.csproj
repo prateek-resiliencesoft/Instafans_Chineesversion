@@ -235,6 +235,7 @@
     <Content Include="Admin\js\jquery.uploadify-3.1.min.js" />
     <Content Include="Admin\Setting.aspx" />
     <Content Include="Admin\User.aspx" />
+    <Content Include="Admin\UserPayment.aspx" />
     <Content Include="Admin\Users.aspx" />
     <Content Include="Admin\Order.aspx" />
     <Content Include="Admin\Orders.aspx" />
@@ -843,6 +844,8 @@
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="TestGrid.aspx" />
+    <Content Include="User\AddFollower.aspx" />
+    <Content Include="User\AddLike.aspx" />
     <Content Include="User\AutoLikeCompletedOrder.aspx" />
     <Content Include="User\AutoLikeOrders.aspx" />
     <Content Include="User\ChangePassword.aspx" />
@@ -1002,6 +1005,7 @@
     <Content Include="User\Payment.aspx" />
     <Content Include="User\PaymentDetails.aspx" />
     <Content Include="User\PaymentRecordDetails.aspx" />
+    <Content Include="User\Rechargehistory.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1160,6 +1164,13 @@
     </Compile>
     <Compile Include="Admin\User.aspx.designer.cs">
       <DependentUpon>User.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserPayment.aspx.cs">
+      <DependentUpon>UserPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserPayment.aspx.designer.cs">
+      <DependentUpon>UserPayment.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Users.aspx.cs">
       <DependentUpon>Users.aspx</DependentUpon>
@@ -1324,6 +1335,20 @@
     <Compile Include="TestGrid.aspx.designer.cs">
       <DependentUpon>TestGrid.aspx</DependentUpon>
     </Compile>
+    <Compile Include="User\AddFollower.aspx.cs">
+      <DependentUpon>AddFollower.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\AddFollower.aspx.designer.cs">
+      <DependentUpon>AddFollower.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\AddLike.aspx.cs">
+      <DependentUpon>AddLike.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\AddLike.aspx.designer.cs">
+      <DependentUpon>AddLike.aspx</DependentUpon>
+    </Compile>
     <Compile Include="User\AutoLikeCompletedOrder.aspx.cs">
       <DependentUpon>AutoLikeCompletedOrder.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1414,6 +1439,13 @@
     </Compile>
     <Compile Include="User\PaymentRecordDetails.aspx.designer.cs">
       <DependentUpon>PaymentRecordDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\Rechargehistory.aspx.cs">
+      <DependentUpon>Rechargehistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\Rechargehistory.aspx.designer.cs">
+      <DependentUpon>Rechargehistory.aspx</DependentUpon>
     </Compile>
     <Compile Include="User\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

@@ -135,19 +135,23 @@ namespace SocialPanel.User
                     int endPoint = 0;
                     InstagramDetails instaDetails = new InstagramDetails();
 
+                    string Url = itemUrl;
+
+                    Url = Url.Replace("http:", "https:");
+
                     if (ddlOrderType.SelectedItem.Value.Contains("Like"))
                     {
-                        InstagramImageResult instaImage = instaDetails.GetInstagramImageIdByUrl(itemUrl);
+                        InstagramImageResult instaImage = instaDetails.GetInstagramImageIdByUrl(Url);
                         startPoint = instaImage.entry_data.DesktopPPage[0].media.likes.count;
                     }
                     if (ddlOrderType.SelectedItem.Value.Contains("Follow"))
                     {
-                         Social_Media_Service_Panel.Helper.InstagramUser instaUser = instaDetails.GetInstgramUserByUserName(itemUrl);
+                        Social_Media_Service_Panel.Helper.InstagramUser instaUser = instaDetails.GetInstgramUserByUserName(Url);
                          startPoint = instaUser.entry_data.UserProfile[0].user.counts.followed_by;
                     }
                     endPoint = startPoint + int.Parse(txtAmount.Text.Trim());
 
-                    orderRepo.AddOrder(ddlOrderType.SelectedItem.Value, OrderNumber, itemUrl, int.Parse(txtAmount.Text.Trim()),
+                    orderRepo.AddOrder(ddlOrderType.SelectedItem.Value, OrderNumber, Url, int.Parse(txtAmount.Text.Trim()),
                         HttpContext.Current.User.Identity.Name, DateTime.Now, startPoint, endPoint, 0, "Pending", DateTime.Now, AmountForTask,"Normal");
                     lblErrorMessage.Text = "Order Added"; 
                 }
